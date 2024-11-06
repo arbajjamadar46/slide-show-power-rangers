@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <style>
+        .containers {
+            width: fit-content;
+            margin: 50px auto;
+            position: relative;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: blanchedalmond;
+        }
+        .Slideshow {
+            height: 550px;
+            width: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .action {
+            height: 40px;
+            position: absolute;
+            top: 40%;
+            cursor: pointer;
+            transition: 0.5s;
+            border: 1px solid white;
+        }
+        .icon-prev {
+            left: 0;
+            text-shadow: 2px 2px #ff0000;
+        }
+        .icon-prev:hover {
+            transform: scale(0.8) translateX(-10px);
+        }
+        .icon-next {
+            right: 0;
+        }
+        .icon-next:hover {
+            transform: scale(0.8) translateX(10px);
+        }
+        .text {
+            text-align: center;
+            color: maroon;
+            text-shadow: 2px 2px 2px rgb(87, 84, 84);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text">Power Rangers</h1>
+    <div class="containers">
+        <img src="RED.jpeg" alt="Slide" class="Slideshow" id="Slideshow">
+        <img src="prev.png" alt="Previous" class="action icon-prev" onclick="previous()"/>
+        <img src="next.png" alt="Next" class="action icon-next" onclick="next()"/>
+    </div>
+
+    <script>
+        const images = ["BLUE.jpeg", "ORANGE.jpeg", "VIOLET.jpeg", "RED.jpeg"];
+        let index = 0;
+        const slide = document.getElementById('Slideshow');
+
+        function next() {
+            index = (index + 1) % images.length;
+            slide.src = images[index];
+        }
+
+        function previous() {
+            index = (index - 1 + images.length) % images.length;
+            slide.src = images[index];
+        }
+
+    </script>
+</body>
